@@ -1,5 +1,3 @@
-Okay, here's a draft for your README.md file based on our recap. This provides a good starting point, and you can expand on sections as your project evolves.
-
 # Financial Asset Recommendation RL Agent
 
 ## Project Goal
