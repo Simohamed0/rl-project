@@ -1,0 +1,66 @@
+project_name: financial_rl_project
+seed: 0
+run_optuna: false
+train_final_agent: true
+evaluate_baselines: true
+evaluate_final_agent: true
+use_real_data: false
+dqn_save_filename: financial_dqn_agent_best.pth
+best_params_save_filename: best_hyperparameters.json
+device: auto
+agent:
+  type: DQN
+  buffer_size: 100000
+  batch_size: 64
+  gamma: 0.99
+  tau: 0.001
+  lr: 0.0005
+  update_every: 4
+  target_update_freq: 100
+  hidden_layers:
+  - 256
+  - 128
+data:
+  mock_data_seed: 42
+  top_n_customers: 50
+  split_ratio: 0.7
+  mock_n_assets: 4
+  mock_n_users: 3
+  mock_price_start: 100.0
+  mock_total_days: 1460
+  mock_annual_mu_range:
+  - 0.03
+  - 0.1
+  mock_annual_vol_range:
+  - 0.1
+  - 0.3
+  mock_daily_trading_days: 252
+  mock_dataset_type: training
+environment:
+  initial_offset_months: 24
+  episode_max_steps: 100
+  accept_probability: 1.0
+  reward_scale: 10.0
+  reward_price_weight: 0.5
+  reward_risk_weight: 0.8
+  reward_hhi_weight: 1.5
+training:
+  num_episodes: 50
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay: 0.995
+optuna:
+  n_trials: 100
+  timeout_seconds: null
+  study_name: financial-rec-dqn-study
+  storage_db_name: financial_rec_study.db
+  training_episodes_per_trial: 50
+  evaluation_episodes_per_trial: 20
+  pruner:
+    _target_: optuna.pruners.NopPruner
+evaluation:
+  num_eval_episodes: 100
+  num_random_episodes: 100
+heuristics:
+  lookback_days: 10
+  cvxpy_solver: SCS
