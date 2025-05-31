@@ -38,7 +38,7 @@
 For each user and each day:
 - **Recommendations**: Rank assets by heuristic weights.
 - **Portfolio Hit-Check**:
-  - Instead of simulating purchases, we **check if the user already holds any of the top-k recommended assets** in their portfolio.
+  - We **check if the user already holds any of the top-k recommended assets** in their portfolio.
 - **Metrics Computed**:
   - **HR@k**: Hit Ratio—was a recommended asset in the user’s portfolio?
   - **P(R)@k**: % users whose returns improved after recommendations.
