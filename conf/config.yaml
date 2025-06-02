@@ -32,7 +32,6 @@ hydra:
     dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}/${hydra.job.override_dirname}
     subdir: ${hydra.job.num}
   job:
-    # name: ${hydra.job.override_dirname} # <<<< COMMENTED OUT THIS LINE
     config:
       override_dirname:
         exclude_keys:
